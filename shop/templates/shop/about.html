@@ -1,0 +1,305 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+{% load static %}
+{% block title %}<title>About</title>{% endblock title %}
+
+<!-- hero-section -->
+<section class="hero-section about gap" style="background-image: url(../static/images/background.png);">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6 col-md-12 col-sm-12" data-aos="fade-up" data-aos-delay="300" data-aos-duration="400">
+				<div class="about-text">
+					<ul class="crumbs d-flex">
+						<li><a href="{% url 'index' %}">Home</a></li>
+						<li class="two"><a href="{% url 'index' %}"><i class="fa-solid fa-right-long"></i> About Us</a>
+						</li>
+					</ul>
+					<h2>{{about.short_description}}</h2>
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-12 col-sm-12" data-aos="fade-up" data-aos-delay="400" data-aos-duration="500">
+				<div class="about-img">
+					<img alt="man" src="{{about.ImageURL}}">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- video-section -->
+<section class="video-section gap">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6" data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
+				<div class="wait-a-minute">
+					<h2>ABOUT US</h2>
+					<p>we take pride in being a significant player in Zambia’s food industry.</p>
+					<h6>Company Overview:</h6>
+					<ul class="paragraph">
+						<li><i class="fa-solid fa-circle-check"></i>
+							<h5>Name:The Real Family Sauce Products Limited</h5>
+						</li>
+						<li><i class="fa-solid fa-circle-check"></i>
+							<h5>Location: Lusaka, Zambia</h5>
+						</li>
+						<li><i class="fa-solid fa-circle-check"></i>
+							<h5>Established: 2023</h5>
+						</li>
+						<li><i class="fa-solid fa-circle-check"></i>
+							<h5>Founders: Jiameng Yao and Caiying Wang.</h5>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-lg-6" data-aos="fade-up" data-aos-delay="300" data-aos-duration="400">
+				<div class="video-section-img">
+					<img alt="elements" src="https://via.placeholder.com/560x560">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- our-mission-section -->
+<section class="our-mission-section gap">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6 col-md-12 col-sm-12" data-aos="flip-up" data-aos-delay="300" data-aos-duration="400">
+				<div class="our-mission-img">
+					<img alt="Illustration" src="{{about.ImageURL}}">
+				</div>
+			</div>
+			<div class="offset-xl-1 col-lg-5 col-md-12 col-sm-12" data-aos="flip-up" data-aos-delay="400"
+				data-aos-duration="500">
+				<div class="our-mission-text">
+					<h2>Our mission is to save you time</h2>
+					<p>{{about.mission}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- about-counters-section -->
+<section class="about-counters-section gap" style="background-image: url(../static/images/background-1.png);">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6 col-md-12 col-sm-12" data-aos="flip-up" data-aos-delay="200" data-aos-duration="300">
+				<div class="about-counters-img">
+					<img alt="" src="https://via.placeholder.com/560x595">
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-12 col-sm-12" data-aos="flip-up" data-aos-delay="300" data-aos-duration="400">
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<div class="counter-hading">
+							<h2>Service shows good taste.</h2>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<div class="count-time">
+							<h2 class="timer count-title count-number" data-to="976" data-speed="2000">976</h2>
+							<p>Satisfied<br>Customer</p>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6" data-aos="flip-up" data-aos-delay="300"
+						data-aos-duration="400">
+						<div class="count-time">
+							<h2 class="timer count-title count-number" data-to="12" data-speed="2000">12</h2>
+							<p>Best<br>
+								Restaurants</p>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6">
+						<div class="count-time sp">
+							<h2 class="timer count-title count-number" data-to="1" data-speed="2000">1</h2>
+							<span>k+</span>
+							<p>Food<br>
+								Delivered</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Our Team Section -->
+<!--
+	<section class="our-team-section gap">
+		<div class="container">
+			<div class="hading" data-aos="fade-up"  data-aos-delay="200" data-aos-duration="300">
+				<h2>Our team</h2>
+				<p>Enim lobortis scelerisque fermentum dui faucibus. Tempor commodo ullamcorper a lacus vestibulum sed arcu non. Magna ac placerat vestibulum lectus mauris.</p>
+			</div>
+			<div class="row">
+				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12" data-aos="fade-up"  data-aos-delay="200" data-aos-duration="300">
+					<div class="our-team">
+						<img alt="team-img" src="https://via.placeholder.com/440x440">
+						<h4><a href="#">Kevin Adamson</a></h4>
+						<p>Pellentesque adipiscing commodo
+							elit at imperdiet dui.</p>
+							<ul class="social-media">
+								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+							</ul>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12" data-aos="fade-up"  data-aos-delay="300" data-aos-duration="400">
+					<div class="our-team">
+						<img alt="team-img" src="https://via.placeholder.com/440x440">
+						<h4><a href="#">Roxie Gilbert</a></h4>
+						<p>Velit dignissim sodales ut eu sem integer vitae. Interdum varius sit amet mattis.</p>
+							<ul class="social-media">
+								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+							</ul>
+					</div>
+				</div>
+				<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12" data-aos="fade-up"  data-aos-delay="400" data-aos-duration="500">
+					<div class="our-team">
+						<img alt="team-img" src="https://via.placeholder.com/440x440">
+						<h4><a href="#">Edgar Johnson</a></h4>
+						<p>At erat pellentesque adipiscing
+								commodo elit.</p>
+							<ul class="social-media">
+								<li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+								<li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+							</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	-->
+<!-- Our partners Section -->
+<section class="our-partners-section gap" style="background:#fcfcfc" data-aos="fade-up" data-aos-delay="200"
+	data-aos-duration="300">
+	<div class="container">
+		<div class="hading">
+			<h2>Our trusted partners</h2>
+		</div>
+		<div class="row align-items-center logodata owl-carousel owl-theme">
+			<div class="col-xl-12 item">
+				<div class="logo-img">
+					<img alt="logo-img" src="https://via.placeholder.com/140x124">
+					<h5>Kings Arms</h5>
+				</div>
+			</div>
+			<div class="col-xl-12 item">
+				<div class="logo-img">
+					<img alt="logo-img" src="https://via.placeholder.com/140x124">
+					<h5>Wilmington</h5>
+				</div>
+			</div>
+			<div class="col-xl-12 item">
+				<div class="logo-img">
+					<img alt="logo-img" src="https://via.placeholder.com/140x124">
+					<h5>Kennington</h5>
+				</div>
+			</div>
+			<div class="col-xl-12 item">
+				<div class="logo-img">
+					<img alt="logo-img" src="https://via.placeholder.com/140x124">
+					<h5>The Victoria</h5>
+				</div>
+			</div>
+			<div class="col-xl-12 item">
+				<div class="logo-img">
+					<img alt="logo-img" src="https://via.placeholder.com/140x124">
+					<h5>The Andover Arms</h5>
+				</div>
+			</div>
+			<div class="col-xl-12 item">
+				<div class="logo-img">
+					<img alt="logo-img" src="https://via.placeholder.com/140x124">
+					<h5>Kings Arms</h5>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Our partners Section -->
+<section class="service-shows gap" data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-xl-4 col-lg-12">
+				<div class="good-taste">
+					<h2>Service shows good taste.</h2>
+					<p></p>
+				</div>
+			</div>
+			<div class="col-xl-8 col-lg-12">
+				<div class="comment-data comment-slide owl-carousel owl-theme">
+					{% for i in test %}
+					<div class="author-text item">
+						<p>
+							"{{i.testimony}}".</p>
+						<div class="thomas">
+							<img alt="girl" src="https://via.placeholder.com/70x70">
+
+							<div>
+								<h6>{{i.name}}</h6>
+								{% for _ in ''|ljust:i.stars  %}
+								<i class="fa-solid fa-star"></i>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+<!-- subscribe-section -->
+<section class="subscribe-section about gap">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="get-the-menu">
+					<h2 data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">Get updates of your favorite
+						products every day</h2>
+					{% for m in messages %}
+					<div class="alert alert-success" role="alert">
+						{{m}}
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+					{% endfor %}
+					<form data-aos="fade-up" data-aos-delay="300" data-aos-duration="400" id="form">
+						{% csrf_token %}
+						<i class="fa-regular fa-bell"></i>
+						<input id="email" type="text" name="email" placeholder="Enter email address">
+						<button class="button button-2">Subscribe</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+	$(document).on('submit', '#form', function (e) {
+    e.preventDefault();
+    $('.page-loader').fadeIn();
+    var email = document.getElementById("email").value;
+    $.ajax({
+        type: 'POST',
+        url: "{% url 'subscribe' %}",
+        data:{
+            'csrfmiddlewaretoken': '{{ csrf_token }}',
+            'action': 'post',
+            'email': email,
+        },
+        success: function (json) {
+            location.reload();
+			$('.page-loader').fadeOut();
+        },
+        error: function (xhr, errmsg, err) {
+
+        }
+})
+});
+</script>
+{% endblock content %}

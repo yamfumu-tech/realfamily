@@ -1,0 +1,219 @@
+{% extends "shop/base.html" %}
+
+{% block content %}
+
+{% load static %}
+{% block title %}<title>Checkout</title>{% endblock title %}
+<!-- hero-section -->
+<section class="hero-section about checkout gap" style="background-image: url('../static/images/background-3.png');">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-12">
+				<div class="about-text pricing-table">
+					<ul class="crumbs d-flex" data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
+						<li><a href="{% url 'index' %}">Home</a></li>
+						<li class="two"><a href="{% url 'check' %}"><i class="fa-solid fa-right-long"></i>Checkout</a>
+						</li>
+					</ul>
+					<h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="400">Checkout</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- checkout-order -->
+<section class="gap">
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-5 col-lg-12" data-aos="flip-up" data-aos-delay="200" data-aos-duration="300">
+				<div class="checkout-order">
+					<div class="title-checkout">
+						<h2>Your order:</h2>
+						<h6 id="len">{{cart|length}}</h6>
+					</div>
+					<ul>
+						{% for item in cart %}
+						<li class="price-list" id="itm">
+							<i class="closeButton fa-solid fa-xmark" id="del" data-del="{{item.product.id}}"></i>
+							<div class="counter-container">
+								<div class="counter-food">
+									<img alt="food" src="{{item.product.imageURL}}" width="100px">
+									<h4 id="titl">{{item.product.title}}</h4>
+								</div>
+								<h4>$<span id="prd">{{item.product.price|floatformat:2}}</span></h4>
+							</div>
+							<div class="price">
+								<div>
+									<h2></h2>
+									<span>sum</span>
+								</div>
+								<div>
+									<div class="qty-input">
+										<button class="qty-count qty-count--minus" data-action="minus" type="button"
+											data-product="{{item.product.id}}" id="remove">-</button>
+										<input id="pd-qty" class="product-qty" type="number" name="product-qty" min="0"
+											value="{{item.qty}}">
+										<button class="qty-count qty-count--add" data-action="add" type="button"
+											id="add" data-product="{{item.product.id}}">+</button>
+									</div>
+									<span>Quantity</span>
+								</div>
+							</div>
+						</li>
+						{% endfor %}
+					</ul>
+					<div class="totel-price">
+						<span>Total order:</span>
+						<h5 id="tt">${{cart.get_total_price}}</h5>
+					</div>
+					<div class="totel-price">
+						<span>To pay:(USD)</span>
+						<h5 id="tot">{{cart.get_total_price}}</h5>
+					</div>
+
+				</div>
+			</div>
+			<div class="offset-xl-1 col-xl-6 col-lg-12" data-aos="flip-up" data-aos-delay="300" data-aos-duration="400">
+				{% for m in messages %}
+				<div class="alert alert-success" role="alert">
+					{{m}}
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				</div>
+				{% endfor %}
+				<form id="checkout-form" class="checkout-form">
+					{% csrf_token %}
+					<h4>Buyer information</h4>
+					<input type="text" name="Name" placeholder="Full Name" required>
+					<div class="row">
+						<div class="col-lg-6">
+							<input type="text" name="phone" placeholder="+260 970000000" required>
+						</div>
+						<div class="col-lg-6">
+							<input type="text" name="email" placeholder="Email" required>
+						</div>
+					</div>
+
+					<input type="text" name="address" placeholder="Cairo road" required>
+					<input type="text" name="company" placeholder="company name" required>
+					<br><br>
+					<input type="submit" class="button-price" id="form-button" value="Request order">
+
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+	$(document).on('click', '#add', function (e) {
+		e.preventDefault();
+		prod = $(this).data('product');
+		$.ajax({
+			type: 'POST',
+			url: "{% url 'update_cart' %}",
+			data: {
+				productid: $(this).data('product'),
+				csrfmiddlewaretoken: '{{ csrf_token }}',
+				action: 'add'
+			},
+			success: function (json) {
+				document.getElementById('tot').innerHTML = json.price;
+				document.getElementById('tt').innerHTML = json.price;
+			},
+			error: function (xhr, errmsg, err) {
+
+			}
+		});
+	});
+
+	$(document).on('click', '#del', function (e) {
+		e.preventDefault();
+		let prod = $(this).data('del');
+		$.ajax({
+			type: 'POST',
+			url: "{% url 'update_cart' %}",
+			data: {
+				productid: prod,
+				csrfmiddlewaretoken: '{{ csrf_token }}',
+				action: 'delete'
+			},
+			success: function (json) {
+				document.getElementById('tot').innerHTML = json.price;
+				document.getElementById('tt').innerHTML = json.price;
+				document.getElementById('len').innerHTML = json.items;
+				document.getElementById('cart-total').innerHTML = json.items
+				document.getElementById('cart-total1').innerHTML = json.items
+			},
+			error: function (xhr, errmsg, err) {
+
+			}
+		});
+	});
+
+	$(document).on('click', '#remove', function (e) {
+		e.preventDefault();
+		let prod = $(this).data('product');
+		console.log(prod)
+		$.ajax({
+			type: 'POST',
+			url: "{% url 'update_cart' %}",
+			data: {
+				productid: $(this).data('product'),
+				csrfmiddlewaretoken: '{{ csrf_token }}',
+				action: 'remove'
+			},
+			success: function (json) {
+				console.log(json.qty);
+				document.getElementById('tot').innerHTML = json.price;
+				document.getElementById('tt').innerHTML = json.price;
+				document.getElementById('len').innerHTML = json.items;
+				document.getElementById('cart-total').innerHTML = json.items
+				document.getElementById('cart-total1').innerHTML = json.items
+			},
+			error: function (xhr, errmsg, err) {
+
+			}
+		});
+	});
+	//var form = document.getElementsByTagName('form');
+	$(document).on('submit', '#checkout-form', function (e) {
+		e.preventDefault();
+		$('.page-loader').fadeIn();
+
+		var formData = $(this).serialize();
+
+		var orderItems = [];
+
+		// Iterate over each item in the cart and collect the data
+		$('.price-list').each(function () {
+			var productTitle = $(this).find('#titl').text();
+			var productQty = parseInt($(this).find('#pd-qty').val());
+			var productPrice = parseFloat($(this).find('#prd').text());
+			var totalPrice = productPrice * productQty;
+			orderItems.push({
+				title: productTitle,
+				quantity: productQty,
+				price: productPrice,
+				total: totalPrice
+			});
+		});
+
+		// Add order items and total to the form data
+		formData += '&order_items=' + JSON.stringify(orderItems);
+		formData += '&total_order=' + $('#tot').text();
+
+		$.ajax({
+			type: 'POST',
+			url: "{% url 'process_order' %}",
+			data: formData,
+			success: function (json) {
+				console.log(json.cart)
+				location.reload();
+				$('.page-loader').fadeOut();
+			},
+			error: function (xhr, errmsg, err) {
+
+			}
+		});
+	});
+</script>
+{% endblock content %}

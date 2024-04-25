@@ -1,0 +1,148 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+{% load static %}
+{% block title %}<title>Blogs</title>{% endblock title %}
+
+<!-- hero-section -->
+<section class="hero-section about gap" style="background-image: url(../static/images/background.png);">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6" data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
+				<div class="about-text">
+					<ul class="crumbs d-flex">
+						<li><a href="{% url 'index' %}">Home</a></li>
+						<li class="two"><a href="{% url 'blog' %}"><i class="fa-solid fa-right-long"></i>Blog Page</a>
+						</li>
+					</ul>
+					<h2>{{details.big_text}}</h2>
+					<p>{{details.subtext}}.</p>
+				</div>
+			</div>
+			<div class="col-lg-6" data-aos="flip-up" data-aos-delay="300" data-aos-duration="400">
+				<div class="restaurants-girl-img blog food-photo-section">
+					<img alt="man" src="{{details.ImageURL}}">
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- posts-section-blog -->
+<section class="posts-section-blog gap">
+	<div class="container">
+		<div class="row">
+			{% for blog in blogs %}
+
+			<div class="col-xl-4 col-lg-6 col-md-6 col-sm-12" data-aos="flip-up" data-aos-delay="200"
+				data-aos-duration="300">
+				<div class="news-posts-one blog">
+
+					<img alt="man" src="{{blog.ImageURL}}">
+					<div class="quickeat">
+						<a href="#">{{blog.category}}</a>
+					</div>
+					<h3>{{blog.title}}</h3>
+					<p>{{blog.content|safe|slice:":110"}}.....</p>
+					<a href="{% url 'single_blog' id=blog.id %}">Read More<i class="fa-solid fa-arrow-right"></i></a>
+					<ul class="data">
+						<li>
+							<h6><i class="fa-solid fa-user"></i>{{blog.publisher}}</h6>
+						</li>
+						<li>
+							<h6><i class="fa-regular fa-calendar-days"></i>{{blog.date}}</h6>
+						</li>
+						<li>
+							<h6><i class="fa-solid fa-eye"></i>{{blog.views}}</h6>
+						</li>
+					</ul>
+				</div>
+			</div>
+			{% endfor %}
+			<div class="row">
+				<div class="col-md-3 offset-md-4">
+					<nav aria-label="Page navigation example">
+						<ul class="pagination justify-content-center">
+							{% if blogs.has_previous %}
+							<li class="page-item" style="color: #B21807;"><a class="page-link" href="?page=1"
+									style="color: #B21807;">&laquo;
+									First</a></li>
+							<li class="page-item" style="color: #B21807;"><a class="page-link"
+									href="?page={{product_objects.previous_page_number}}"
+									style="color: #B21807;">previous</a>
+							</li>
+
+							{% endif %}
+							{% for i in nums %}
+							<li class="page-item " style="color: #B21807;"></li><a href="?page={{ forloop.counter }}"
+								class="page-link" style="color: #B21807;">{{ forloop.counter }}</a></li>
+							{% endfor %}
+
+							<!-- <li class="page-item disabled"></li><a href="#" class="page-link"> Page {{ product_objects.number }} of {{ product_objects.paginator.num_pages }}</a></li>-->
+							{% if blogs.has_next %}
+							<li class="page-item"><a class="page-link"
+									href="?page={{product_objects.next_page_number}}">Next</a>
+							</li>
+							<li class="page-item"><a class="page-link"
+									href="?page={{product_objects.paginator.num_pages}}">Last
+									&raquo;</a></li>
+							{% endif %}
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- subscribe-section -->
+<section class="subscribe-section gap" style="background:#fcfcfc">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6" data-aos="flip-up" data-aos-delay="200" data-aos-duration="300">
+				<div class="img-subscribe">
+					<img alt="Illustration" src="{{sub.ImageURL}}">
+				</div>
+			</div>
+			<div class="col-lg-5 offset-lg-1" data-aos="flip-up" data-aos-delay="300" data-aos-duration="400">
+				<div class="get-the-menu">
+					<h2>Get the menu of your favorite restaurants every day</h2>
+					{% for m in messages %}
+					<div class="alert alert-success" role="alert">
+						{{m}}
+						<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+					</div>
+					{% endfor %}
+					<form id="form">
+						{% csrf_token %}
+						<i class="fa-regular fa-bell"></i>
+						<input id="email" type="text" name="email" placeholder="Enter email address">
+						<button class="button button-2">Subscribe</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<script>
+	$(document).on('submit', '#form', function (e) {
+    e.preventDefault();
+    $('.page-loader').fadeIn();
+    var email = document.getElementById("email").value;
+    $.ajax({
+        type: 'POST',
+        url: "{% url 'subscribe' %}",
+        data:{
+            'csrfmiddlewaretoken': '{{ csrf_token }}',
+            'action': 'post',
+            'email': email,
+        },
+        success: function (json) {
+            location.reload();
+			$('.page-loader').fadeOut();
+        },
+        error: function (xhr, errmsg, err) {
+
+        }
+})
+});
+</script>
+{% endblock content %}

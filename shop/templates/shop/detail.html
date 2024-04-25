@@ -1,0 +1,60 @@
+{% extends "shop/base.html" %}
+{% block content %}
+{% load static %}
+<title>Product</title>
+  <!-- hero-section -->
+  <section class="hero-section about single-blog gap" style="background-image: url(../static/images/background-3.png);" data-aos="flip-up"  data-aos-delay="300" data-aos-duration="400">
+			<div class="container">
+				<div class="row align-items-center">
+					<div class="offset-xl-2 col-xl-6 col-lg-12">
+						<div class="about-text">
+							<ul class="crumbs d-flex">
+								<li><a href="{% url 'index' %}">Home</a></li>
+								<li><a href="{% url 'products' %}"><i class="fa-solid fa-right-long"></i>products</a></li>
+								<li class="two"><a href="/{{product_object.id}}"><i class="fa-solid fa-right-long"></i>product</a></li>
+							</ul>
+							
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+  </section>
+<!-- product-detail-section -->
+<section class="product-detail-section">
+    <div class="container dish-foods">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="img-blog-full">
+                    <img src="{{ product_object.imageURL }}" alt="Product Image">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="product-details">
+                    <div class="about-text">
+                        <h2>{{ product_object.title }}</h2>
+                        <p>{{ product_object.description }}</p>
+                        
+                        <p>Availability: In Stock</p>
+                    </div>
+                    
+                    <div class="product-options">
+                        <div class="price">
+                            <h2>$39</h2>
+                            <div class="qty-input">
+                                  <button class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
+                                  <input class="product-qty" type="number" name="product-qty" min="0" value="1">
+                                  <button class="qty-count qty-count--add" data-action="add" type="button">+</button>
+                              </div>
+                          </div>
+                          <button class="button-price">Add to Basket<i class="fa-solid fa-bag-shopping"></i></button>
+                   </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+{% endblock content %}

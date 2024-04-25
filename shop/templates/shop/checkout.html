@@ -1,0 +1,125 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/main.css' %}"/>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="box-element" id="form-wrapper">
+            <form id="form">
+				      {% csrf_token %}
+              <div id="shipping-info">
+                <p>Order Details:</p>
+                <hr>
+                <div class="form-field">
+                  <input class="form-control" type="text" name="name" placeholder="full name"/> 
+                </div>
+                <div class="form-field">
+                  <input class="form-control" type="text" name="number" placeholder="number"/>
+                </div>
+                <div class="form-field">
+                  <input class="form-control" type="email" name="email" placeholder="Email"/>
+                </div>
+                <div class="form-field">
+                  <input class="form-control" type="text" name="address" placeholder="Address"/>
+                </div>
+              </div>
+
+              <hr />
+              <input id="form-button" class="btn btn-success btn-block" type="submit" value="Request order"/>
+            </form>
+          </div>
+      
+        </div>
+
+        <div class="col-lg-6">
+          <div class="box-element">
+            <a class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+            <hr />
+            <h3>Order Summary</h3>
+            <hr />
+            {% for item in cart %}
+            <div class="cart-row">
+              <div style="flex: 2">
+                <img class="row-image" src="{{item.product.imageURL}}" />
+              </div>
+              <div style="flex: 2"><p>{{item.product.title}}</p></div>
+              <div style="flex: 1">
+                <p>${{item.product.price|floatformat:2}}</p>
+              </div>
+              <div style="flex: 1"><p>x{{item.qty}}</p></div>
+            </div>
+            {% endfor %}
+            <h5>Items: {{cart|length}}</h5>
+            <h5>Total: ${{cart.get_total_price}}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script>
+      //var form = document.getElementsByTagName('form');
+      $(document).on('click', '#form-button', function(e){
+        e.preventDefault();
+        var Order_info = {
+				'address':null,
+				'name':null,
+				'email':null,
+        'number':null,
+			}
+		
+	    	Order_info.address = form.address.value
+		    Order_info.name = form.name.value
+		    Order_info.email = form.email.value
+        Order_info.number = form.number.value
+	    	
+	    	console.log('Shipping Info:', Order_info)
+        
+        $.ajax({
+          type: 'POST',
+          url: "{% url 'process_order' %}" ,
+          data: {
+            dd: JSON.stringify(Order_info),
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            action: 'post'
+          },
+          success: function (json){
+        
+          },
+          error: function (xhr, errmsg, err) {
+
+          }
+        });
+      });
+
+
+
+			
+
+        
+
+	    	
+	    	
+			
+	</script>
+  
+
+  </body>
+</html>
