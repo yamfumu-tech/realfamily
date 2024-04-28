@@ -2,7 +2,27 @@
 
 {% block content %}
 {% load static %}
-{% block title %}<title>About</title>{% endblock title %}
+{% block meta %}
+<title>{{about.meta_title}}</title>
+<meta name="description" content="{{about.meta_description}}">
+<meta name="keywords" content="{{about.meta_keywords}}">
+
+<link rel="canonical" href="https://therealfamilyproducts.com/about">
+
+<meta name="image" content="{{about.ImageURL}}">
+
+
+
+<meta property="og:title" content="{{about.meta_title}}">
+<meta property="og:description" content="{{about.meta_description}}">
+<meta property="og:image" content="{{about.ImageURL}}">
+<meta property="og:url" content="https://therealfamilyproducts.com/about">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{about.meta_title}}">
+<meta name="twitter:description" content="{{about.meta_description}}">
+<meta name="twitter:image" content="{{about.ImageURL}}">
+{% endblock meta %}
 
 <!-- hero-section -->
 <section class="hero-section about gap" style="background-image: url(../static/images/background.png);">

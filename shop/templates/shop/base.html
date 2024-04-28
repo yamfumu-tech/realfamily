@@ -6,6 +6,16 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% block meta %} {% endblock meta %}
+  <meta name="author" content="The real family sauce products limited">
+  <meta name="robots" content="index, follow">
+<meta name="language" content="English">
+<meta name="revisit-after" content="2 days">
+<meta http-equiv="Cache-control" content="public">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="distribution" content="global">
+<meta name="HandheldFriendly" content="true">
+<meta name="theme-color" content="#B21807"> <!-- For Android Chrome -->
   
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -34,7 +44,12 @@
 
   <link rel="stylesheet" href="{% static 'shop/style1.css' %}" />
 
-  {% block title %} {% endblock title %}
+  <link rel="apple-touch-icon" sizes="180x180" href="{ % static 'images/favicon//apple-touch-icon.png' %}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicon/favicon-32x32.png' %}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon/favicon-16x16.png' %}">
+	<link rel="manifest" href="{% static 'images/favicon/site.webmanifest' %}">
+
+
   <!--<script type="text/javascript" src="{% static 'shop/all.js' %}"></script> -->
 </head>
 <body>
@@ -154,8 +169,10 @@
 
 					<li><a href="{% url 'products' %}">Products</a></li>
 
+					<li><a href="{% url 'blog' %}">Blog & News</a></li>
 
-					</li>
+
+					
 
 					<li><a href="{% url 'contacts' %}">contacts</a></li>
 
@@ -192,6 +209,7 @@
                         <li><a href="{% url 'index' %}">home<i class="fa-solid fa-arrow-right"></i></a></li>
                         <li><a href="{% url 'about' %}">about us<i class="fa-solid fa-arrow-right"></i></a></li>
                         <li><a href="{% url 'contacts' %}">Contacts<i class="fa-solid fa-arrow-right"></i></a></li>
+						<li><a href="{% url 'products' %}">Our Products<i class="fa-solid fa-arrow-right"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -202,8 +220,8 @@
                         <i class="fa-solid fa-location-dot"></i>
                         <p>{{footer.address}}</p>
                     </div>
-                    <a href="mailto:quickeat@mail.net"><i class="fa-solid fa-envelope"></i>{{footer.email}}</a>
-                    <a href="callto:+14253261627"><i class="fa-solid fa-phone"></i>{{footer.phone}}</a>
+                    <a href="mailto:{{footer.email}}"><i class="fa-solid fa-envelope"></i>{{footer.email}}</a>
+                    <a href="tell:{{footer.phone}}"><i class="fa-solid fa-phone"></i>{{footer.phone}}</a>
                 </div>
                 <ul class="social-media">
                         <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
@@ -213,10 +231,10 @@
             </div>
         </div>
         <div class="footer-two gap no-bottom">
-            <p>Copyright © 2022. Quickeat. All rights reserved.</p>
+            <p>Copyright © <script>document.write( new Date().getFullYear() );</script>. The Real Family Sauce Products LTD. All rights reserved.</p>
             <div class="privacy">
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms & Services</a>
+                <a target="_blank" href="https://www.yamfumu.co">Developed by Yamfumu Technologies</a>
+                
             </div>
         </div>
     </div>

@@ -3,7 +3,35 @@
 {% block content %}
 
 {% load static %}
-{% block title %}<title>Home</title>{% endblock title %}
+{% block meta %}
+<title>Real Family Sauce Products Ltd | Premium Food Products in Zambia</title>
+<meta name="description" content="Discover high-quality chili sauces, tomato products, BBQ sauce, and more at Real Family Sauce Products Ltd. Proudly serving local and international markets with delicious and nutritious food options.">
+<meta name="keywords" content="Zambia food products, premium sauces, Real Family Sauce, nutritious food, international markets">
+
+<link rel="canonical" href="https://therealfamilyproducts.com">
+
+<meta name="image" content="{{details.ImageURL}}">
+
+
+
+
+<meta property="og:title" content="Real Family Sauce Products Ltd | Premium Food Products in Zambia">
+<meta property="og:description" content="Discover high-quality chili sauces, tomato products, BBQ sauce, and more at Real Family Sauce Products Ltd. Proudly serving local and international markets with delicious and nutritious food options.">
+<meta property="og:image" content="{{details.ImageURL}}">
+<meta property="og:url" content="https://therealfamilyproducts.com">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Real Family Sauce Products Ltd | Premium Food Products in Zambia">
+<meta name="twitter:description" content="Discover high-quality chili sauces, tomato products, BBQ sauce, and more at Real Family Sauce Products Ltd. Proudly serving local and international markets with delicious and nutritious food options.">
+<meta name="twitter:image" content="{{details.ImageURL}}">
+
+
+
+
+
+
+
+{% endblock meta %}
 <!-- hero-section -->
 <section class="hero-section gap" style="background-image: url('static/images/background-1.png');">
 	<div class="container">
@@ -89,14 +117,16 @@
 						<div class="price">
 							<h4 style="color: #B21807; font-weight: bold;">ZMW {{ product.price }}</h4>
 							<div class="qty-input">
-								<button class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
-								<input id="qty{{ product.id }}" class="product-qty" type="number" name="product-qty"
-									min="0" value="1">
-								<button class="qty-count qty-count--add" data-action="add" type="button">+</button>
+								<button class="qty-count qty-count--minus" data-action="minus"
+									type="button">-</button>
+								<input id="qty{{ product.id }}" class="product-qty"
+									type="number" name="product-qty" min="0" value="1">
+								<button class="qty-count qty-count--add" data-action="add"
+									type="button">+</button>
 							</div>
 						</div>
-						<button data-product="{% url 'detail' id=product.id %}" data-action="add" class="button-price" id="add-cart">Add
-							to Basket<i class="fa-solid fa-bag-shopping"></i></button>
+						<button data-product="{{ product.id }}" data-action="add" id="add-cart" class="button-price">Add to Basket<i class="fa-solid fa-bag-shopping"></i>
+						</button>
 					</div>
 				</div>
 			</div>

@@ -3,7 +3,7 @@
 {% block content %}
 
 {% load static %}
-{% block title %}<title>Products</title>{% endblock title %}
+{% block meta %}<title>Products</title>{% endblock meta %}
 
 <!-- hero-section -->
 <section class="hero-section about gap" style="background-image: url(../../static/images/background-1.png);">
@@ -46,7 +46,7 @@
 <section class="tabs gap">
 
 	<div class="container">
-		<h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="400">Our products</h2>
+		<h2 style="font-weight: bold;" data-aos="fade-up" data-aos-delay="300" data-aos-duration="400">Our products</h2>
 
 		<div class="tabs-img-back">
 
@@ -85,9 +85,8 @@
 															type="button">+</button>
 													</div>
 												</div>
-												<button data-product="{{ product.id }}" data-action="add" id="add-cart"
-													class="button-price">Add to Basket<i
-														class="fa-solid fa-bag-shopping"></i></button>
+												<button data-product="{{ product.id }}" data-action="add" id="add-cart" class="button-price">Add to Basket<i class="fa-solid fa-bag-shopping"></i>
+												</button>
 											</div>
 									</div>
 								</div>
