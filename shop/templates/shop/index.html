@@ -5,25 +5,55 @@
 {% load static %}
 {% block title %}<title>Home</title>{% endblock title %}
 <!-- hero-section -->
-<section class="hero-section about gap" style="background-image: url('static/images/background-1.png');">
+<section class="hero-section gap" style="background-image: url('static/images/background-1.png');">
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-lg-6" data-aos="fade-up" data-aos-delay="200" data-aos-duration="300">
 				<div class="restaurant">
 					<h1>{{details.welcome_text}}</h1>
 					<p>{{details.subtext}}</p>
+					<div class="nice-select-one">
+						
+					<a href="{% url 'products' %}" class="button button-2">Order Now</a>
+					</div>
 
 				</div>
 			</div>
-			<div class="col-lg-6" data-aos="fade-up" data-aos-delay="300" data-aos-duration="400">
+			<!-- <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300" data-aos-duration="400">
 				<div class="about-img">
 					<img alt="welcome" src="{{details.ImageURL}}">
+				</div>
+			</div> -->
+			<div class="col-lg-6" data-aos="fade-up"  data-aos-delay="300" data-aos-duration="400">
+				<div class="img-restaurant">
+					<img alt="man" src="{{details.ImageURL}}">
+					<!-- <div class="wilmington">
+						<img alt="img" src="https://via.placeholder.com/90x90">
+						<div>
+							<p>Restaurant of the Month</p>
+							<h6>The Wilmington</h6>
+							<div>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-solid fa-star"></i>
+								<i class="fa-regular fa-star-half-stroke"></i>
+							</div>
+						</div>
+					</div> -->
+					<div class="wilmington location-restaurant">
+						<i class="fa-solid fa-location-dot"></i>
+						<div>
+							<h6>We Deliver</h6>
+							<p>To Your city</p>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-<!-- works-section -->
+
 
 
 <!-- Lunch Section -->
@@ -57,7 +87,7 @@
 							</div>
 						</div> -->
 						<div class="price">
-							<h6 style="color: #B21807;">ZMW {{ product.price }}</h6>
+							<h4 style="color: #B21807; font-weight: bold;">ZMW {{ product.price }}</h4>
 							<div class="qty-input">
 								<button class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
 								<input id="qty{{ product.id }}" class="product-qty" type="number" name="product-qty"
@@ -99,7 +129,7 @@
 	</div>
 </section>
 <!-- counters-section -->
-<section class="counters-section">
+<!-- <section class="counters-section">
 	<div class="container">
 		<div class="row align-items-center">
 			<div class="col-lg-3 col-md-6 col-sm-12" data-aos="flip-up" data-aos-delay="200" data-aos-duration="300">
@@ -131,7 +161,7 @@
 			</div>
 		</div>
 	</div>
-</section>
+</section> -->
 <!-- reviews-sections -->
 <section class="reviews-sections gap">
 	<div class="container">
@@ -144,7 +174,7 @@
 						<div class="item">
 							<h4>"{{tes.testimony}}".</h4>
 							<div class="thomas">
-								<img alt="phote" src="https://via.placeholder.com/70x70">
+								<img alt="photo" src="https://via.placeholder.com/70x70">
 
 								<div>
 									<h6>{{tes.name}}</h6>
@@ -178,7 +208,8 @@
 			<div class="col-xl-6 col-lg-12" data-aos="flip-up" data-aos-delay="200" data-aos-duration="300">
 				<div class="news-posts-one">
 					<a href="{% url 'single_blog' id=most.id %}">
-						<img alt="man" src="{{most.ImageURL}}" width="626px" height="269px">
+						<img style="max-height: 500px;" alt="{{most.title}}" src="{{most.ImageURL}}">
+						
 					</a>
 					
 					<div class="quickeat">
@@ -186,9 +217,10 @@
 					</div>
 					<a href="{% url 'single_blog' id=most.id %}">
 						<h3>{{most.title}}</h3>
+						<p>{{most.content|safe|slice:":110"}}.....</p>
 					</a>
 					<!-- <p>{{most.content|safe|slice:":110"}}.....</p> -->
-					<a style="color: white;" class="button button-2" href="{% url 'single_blog' id=most.id %}">Read More<i class="fa-solid fa-arrow-right"></i></a>
+					<a href="{% url 'single_blog' id=most.id %}">Read More<i class="fa-solid fa-arrow-right"></i></a>
 					<ul class="data">
 						<li>
 							<h6><i class="fa-solid fa-user"></i>{{most.publisher}}</h6>
@@ -207,7 +239,8 @@
 			<div class="col-xl-6 col-lg-12" data-aos="flip-up" data-aos-delay="300" data-aos-duration="400">
 				{% for blog in blogs %}
 				<div class="news-post-two">
-					<img alt="food-img" src="{{blog.ImageURL}}" width="150px">
+					<a href="{% url 'single_blog' id=blog.id %}"><img alt="{{blog.title}}" src="{{blog.ImageURL}}"></a>
+					
 					<div class="news-post-two-data">
 						<div class="quickeat">
 							<a href="#">{{blog.category}}</a>

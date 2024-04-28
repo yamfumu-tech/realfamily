@@ -26,7 +26,7 @@
     <div class="container dish-foods">
         <div class="row">
             <div class="col-lg-4">
-                <div class="img-blog-full">
+                <div class="dish details">
                     <img src="{{ product_object.imageURL }}" alt="Product Image">
                 </div>
             </div>
@@ -41,7 +41,7 @@
                     
                     <div class="product-options">
                         <div class="price">
-                            <h2>$39</h2>
+                            <h3 style="color: #B21807; font-weight: bold;">ZMW{{ product_object.price }}</h3>
                             <div class="qty-input">
                                   <button class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
                                   <input class="product-qty" type="number" name="product-qty" min="0" value="1">

@@ -46,7 +46,7 @@
 <section class="tabs gap">
 
 	<div class="container">
-		<h3 data-aos="fade-up" data-aos-delay="300" data-aos-duration="400">Our products</h3>
+		<h2 data-aos="fade-up" data-aos-delay="300" data-aos-duration="400">Our products</h2>
 
 		<div class="tabs-img-back">
 
@@ -66,14 +66,16 @@
 									<div class="dish">
 											<img alt="food-dish" src="{{ product.imageURL }}">
 											<div class="dish-foods">
-												<h4>{{ product.title }}</h4>
-												<div class="dish-icon">
+												<a href="{% url 'detail' id=product.id %}">
+													<h3>{{ product.title }}</h3>
+												</a>
+												<!-- <div class="dish-icon">
 													<div class="cafa-button">
 														<a href="{% url 'detail' id=product.id %}">View product</a>
 													</div>
-												</div>
+												</div> -->
 												<div class="price">
-													<h3>${{ product.price }}</h3>
+													<h4 style="color: #B21807; font-weight: bold;">ZMW {{ product.price }}</h4>
 													<div class="qty-input">
 														<button class="qty-count qty-count--minus" data-action="minus"
 															type="button">-</button>

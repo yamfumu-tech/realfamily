@@ -252,6 +252,12 @@ header {
 .img-restaurant{
     position: relative;
 }
+
+.img-restaurant img{
+    width: 680px;
+    border-radius: 10px;
+    padding-right: 15px;
+}
 .wilmington img {
     width: auto;
     border-radius: 10px;
@@ -326,36 +332,69 @@ header {
 }
 /*------------- button end --------*/
 .extras.bag {
-    position: relative; /* Make sure the container is positioned relatively */
+    position: relative;
+    text-align: end; /* Align bag content to the end */
 }
 
-.bag i {
+.bag-icon {
     background-color: white;
     width: 40px;
     height: 40px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    display: inline-flex;
     border-radius: 10px;
     margin-right: 15px;
-    position: relative; /* Adjust icon position to relative */
 }
 
 .cart-count {
     position: absolute;
-    top: -10px; /* Adjust this value to position the number properly */
-    right: -10px; /* Adjust this value to position the number properly */
-    background-color: #B21807; /* Customize background color */
-    color: white; /* Customize text color */
-    font-size: 12px; /* Customize font size */
-    padding: 4px 8px; /* Customize padding */
-    border-radius: 50%; /* Make it circular */
+    top: -8px; /* Adjust top position as needed */
+    right: -8px; /* Adjust right position as needed */
+    background-color: #B21807;
+    color: white;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 50%;
 }
 
-.bag {
-    text-align: end;
+/* Mobile-specific styles */
+@media screen and (max-width: 768px) {
+    .extras.bag {
+        display: flex;
+        align-items: center;
+    }
+    .extras.bag .menu-btn {
+        margin-right: 10px; /* Add spacing between bag and menu icons */
+        position: relative;
+    }
+    .extras.bag .cart-count {
+        background-color: #B21807;
+        color: white;
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 50%;
+        position: absolute;
+        top: -10px; /* Adjust vertical position */
+        right: -10px; /* Adjust horizontal position */
+        transform: translate(50%, -50%); /* Center the count within the bag */
+    }
+    .extras.bag .bar-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto; /* Pushes the shopping bag and count to the left */
+        margin-right: 10px; /* Pushes the shopping bag and count to the left */
+    }
+    .extras.bag i {
+        position: relative; /* Ensure proper stacking context for cart count */
+        margin-right: 10px; /* Spacing between bag icon and cart count */
+    }
 }
 
+
+
+/* Additional styles for the bag button */
 .bag .button {
     padding: 0 18px;
     height: 43px;
@@ -659,25 +698,53 @@ a.button.button-2 i {
 /*-------------     news-section      --------------*/
 .news-section  h2 {
     font-weight: bold;
-    width: 33%;
+    width: 100%; /* Full width on smaller screens */
     padding-bottom: 20px;
+    text-align: center; /* Center align on all screens */
 }
-.news-posts-one img{
+.news-posts-one img,
+.news-post-two img {
+    max-width: 100%;
+    max-height: 300px; /* Adjust this value as needed */
+    height: auto;
+    width: auto; /* Ensures images don't stretch beyond their natural size */
     border-radius: 20px;
-    width: 100%;
+    object-fit: cover;
 }
-.news-posts-one {
-    padding: 25px;
-        box-shadow: 0px -1px 30px 4px rgba(0,0,0,0.05);
-    -webkit-box-shadow: 0px -1px 30px 4px rgba(0,0,0,0.05);
-    -moz-box-shadow: 0px -1px 30px 4px rgba(0,0,0,0.05);
-    border-radius: 20px;
+
+.news-posts-one,
+.news-post-two {
     position: relative;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 2px 6px rgba(236, 236, 236, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden; /* Hide overflowing content */
+    background-size: cover; /* Ensures the background image covers the container */
+    background-position: center; /* Center the background image */
 }
 .quickeat {
     position: absolute;
-    top: 8%;
-    left: 8%;
+    top: 10px; /* Adjust as needed */
+    left: 10px; /* Adjust as needed */
+    z-index: 1; /* Ensure it's above the image */
+}
+.news-posts-one h3,
+.news-post-two h6 {
+    font-weight: bold;
+    margin-bottom: 10px; /* Reduce bottom margin for smaller screens */
+    font-size: 20px; /* Adjust font size for readability */
+}
+.news-posts-one h3{
+    font-size: 40px;
+    margin: 10px;
+}
+
+.news-posts-one p,
+.news-post-two p {
+    font-size: 14px; /* Adjust font size for readability */
+    line-height: 1.5; /* Improve line spacing */
+    margin-bottom: 10px; /* Add spacing between paragraphs */
 }
 .news-posts-one .quickeat a {
     padding: 5px 15px;
@@ -687,10 +754,7 @@ a.button.button-2 i {
     font-weight: 400;
     font-size: 14px;
 }
-.news-posts-one h3 {
-    font-weight: bold;
-    padding: 40px 0 20px;
-}
+
 .news-posts-one a{
     color: var(--color-theme);
     font-weight: 600;
@@ -703,12 +767,20 @@ a.button.button-2 i {
     padding-bottom: 20px;
     width: 95%;
 }
+ul.data {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    padding-top: 10px; /* Adjust padding for smaller screens */
+    margin-top: 10px; /* Add spacing between sections */
+}
 ul.data li{
-    padding-right: 20px;
+    padding-right: 10px;
 }
 ul.data h6{
     color: #cfcfcf;
     font-size: 14px;
+    margin-bottom: 0;
 }
 ul.data {
     display: flex;
@@ -766,9 +838,30 @@ ul.data h6 i {
     padding-top: 6px;
     margin-top: 7px;
 }
+
+@media only screen and (max-width: 768px) {
+    .news-posts-one,
+    .news-post-two {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .quickeat {
+        top: 5px; /* Adjust top position for smaller screens */
+        left: 5px; /* Adjust left position for smaller screens */
+    }
+
+    ul.data li {
+        padding-right: 5px; /* Adjust right padding for smaller screens */
+    }
+
+    ul.data h6 {
+        font-size: 12px; /* Adjust font size for smaller screens */
+    }
+}
 /*-------------     subscribe section     --------------*/
 .img-subscribe img {
     width: 100%;
+    border-radius: 20px;
 }
 .get-the-menu h2{
     font-weight: bold;
@@ -801,6 +894,11 @@ ul.data h6 i {
     align-items: center;
 }
 /*-------------     footer      --------------*/
+.contact-us-img img{
+    max-height: 600px;
+    max-width: 100%;
+    border-radius: 50px;
+}
 footer p {
   font-size: 16px;
 }
@@ -938,11 +1036,21 @@ ul.crumbs li.two i {
 .about-text p{
     width: 82%;
 }
+
+.about-img img,
+.video-section-img img,
+.our-mission-img img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50px;
+    /* Add any other necessary styles */
+}
+
+
 .about-img img {
     border-radius: 50px;
     transform: rotate(13deg);
-    width: 500px;
-    height: 500px;
+    max-height: 650px;
     margin-left: 44px;
 }
 .about-img {
@@ -963,6 +1071,33 @@ ul.crumbs li.two i {
     font-weight: bold;
     padding-bottom: 30px;
     margin: 0;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 991px) {
+    /* Adjust image size on smaller devices */
+    .about-img img,
+    .video-section-img img,
+    .our-mission-img img {
+        max-width: 80%;
+    }
+}
+
+@media (max-width: 767px) {
+    /* Further adjustments for smaller devices */
+    .about-text h2,
+    .about-text p,
+    .our-mission-text h2,
+    .our-mission-text p {
+        width: 100%; /* Adjust text width */
+    }
+
+    /* Adjust padding or margins as needed */
+    .about-img,
+    .video-section-img,
+    .our-mission-img {
+        padding: 30px 0; /* Example padding adjustment */
+    }
 }
 /*----------------    restaurants-girl-img      ------------------------*/
 .restaurants-girl-img.food-photo-section a.one {
@@ -1479,9 +1614,13 @@ ul.paragraph li i {
     border-radius: 25px;
     margin-top: 40px;
     background-color: white;
+    position: relative; /* Add position relative */
+    overflow: hidden; /* Ensure overflow is hidden */
 }
 .dish img {
-    padding-bottom: 20px;
+    width: 100%; /* Make the image fill its container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensure it's a block element */
 }
 .dish h3 {
     font-size: 36px;
@@ -1509,6 +1648,10 @@ ul.paragraph li i {
 .dish-icon.end button {
     background-color: transparent;
     border: 0;
+}
+
+.dish:hover .dish-info {
+    opacity: 1; /* Show on hover */
 }
 ul.menu-dish {
     padding-top: 10px;
@@ -1538,17 +1681,120 @@ header.two {
 .dish-info h5 {
     font-size: 24px;
     font-weight: bold;
-    width: 80%;
-    padding-top: 27px;
+    margin-bottom: 10px; /* Add some bottom margin */
 }
 .dish-info {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9); /* Add a semi-transparent background */
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0; /* Initially hide */
+    transition: opacity 0.3s ease; /* Add transition effect */
 }
 .dish-info i {
     position: absolute;
     right: 0%;
     font-size: 18px;
 }
+
+.dish-info p {
+    margin-bottom: 15px; /* Add some bottom margin */
+}
+
+/* Default styles */
+
+.product-detail-section {
+    padding: 60px 0;
+}
+
+.about-text h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.product-details {
+    margin-top: 20px;
+}
+
+.product-options {
+    margin-top: 30px;
+}
+
+.price h3 {
+    font-size: 24px;
+}
+
+.qty-input {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.qty-count {
+    padding: 8px;
+    font-size: 18px;
+}
+
+.button-price {
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 16px;
+}
+
+/* Responsive styles */
+
+@media (max-width: 992px) {
+    .col-lg-4 {
+        flex-basis: 100%;
+        margin-bottom: 20px;
+    }
+
+    .col-lg-6 {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-text h2 {
+        font-size: 22px;
+    }
+
+    .price h3 {
+        font-size: 20px;
+    }
+
+    .qty-count {
+        font-size: 16px;
+    }
+
+    .button-price {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .about-text h2 {
+        font-size: 18px;
+    }
+
+    .price h3 {
+        font-size: 18px;
+    }
+
+    .qty-count {
+        font-size: 14px;
+    }
+
+    .button-price {
+        font-size: 12px;
+    }
+}
+
+
 /*----------     qty-input      ------------*/
 .qty-input {
   color: #000;
@@ -1668,6 +1914,8 @@ header.two {
     color: #B21807;
 
 }
+
+
 /*-------------            Service page        -------------*/
 .about-text a {
     margin-top: 30px;
@@ -2296,6 +2544,8 @@ li.color h5,li.color h5 i {
 .img-blog-full img {
     border-radius: 98px;
     margin-top: 40px;
+    max-height: 700px;
+    max-width: 100%;
 }
 .title-container h2,.title-container h3,.title-container h4{
     font-weight: bold;
@@ -2533,9 +2783,9 @@ li.hide-button h6 i{
     top: 0;
     width: 100%;
     left: 0;
-    box-shadow: -1px 15px 26px -4px rgb(161 151 151 / 0%);
-    -webkit-box-shadow: -1px 15px 26px -4px rgb(161 151 151 / 0%);
-    -moz-box-shadow: -1px 15px 26px -4px rgba(161,151,151,0%);
+    box-shadow: -1px 15px 26px -4px rgba(236, 236, 236, 0);
+    -webkit-box-shadow: -1px 15px 26px -4px rgba(236, 236, 236, 0);
+    -moz-box-shadow: -1px 15px 26px -4px rgba(236, 236, 236, 0);
 }
 .contact-map-data{
     display: flex;

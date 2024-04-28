@@ -37,12 +37,14 @@
 				data-aos-duration="300">
 				<div class="news-posts-one blog">
 
-					<img alt="man" src="{{blog.ImageURL}}">
+					<a href="{% url 'single_blog' id=blog.id %}"><img alt="man" src="{{blog.ImageURL}}"></a>
 					<div class="quickeat">
 						<a href="#">{{blog.category}}</a>
 					</div>
+					<a href="{% url 'single_blog' id=blog.id %}">
 					<h3>{{blog.title}}</h3>
 					<p>{{blog.content|safe|slice:":110"}}.....</p>
+					</a>
 					<a href="{% url 'single_blog' id=blog.id %}">Read More<i class="fa-solid fa-arrow-right"></i></a>
 					<ul class="data">
 						<li>

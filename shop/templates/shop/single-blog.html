@@ -13,7 +13,7 @@
 							<ul class="crumbs d-flex">
 								<li><a href="{% url 'index' %}">Home</a></li>
 								<li><a href="{% url 'blog' %}"><i class="fa-solid fa-right-long"></i>blog</a></li>
-								<li class="two"><a href="{% url 'single_blog' id=blog.id %}"><i class="fa-solid fa-right-long"></i>Single Blog Page</a></li>
+								<li class="two"><a href="{% url 'single_blog' id=blog.id %}"><i class="fa-solid fa-right-long"></i>{{blog.title}}</a></li>
 							</ul>
 							<div class="quickeat">
 									<a href="#">{{blog.category}}</a>
@@ -27,14 +27,11 @@
 						</div>
 					</div>
 					<div class="col-lg-2">
-						<div class="name-dedails">
-							<img alt="girl" src="https://via.placeholder.com/80x80">
-							<h6>{{blog.publisher}}</h6>
-						</div>
+						
 					</div>
 					<div class="col-lg-12">
 						<div class="img-blog-full">
-							<img alt="blog-page-img" src="{{blog.ImageURL}}">
+							<img alt="{{blog.title}}" src="{{blog.ImageURL}}">
 						</div>
 					</div>
 				</div>
