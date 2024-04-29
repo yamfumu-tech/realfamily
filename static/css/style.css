@@ -3042,6 +3042,20 @@ ul.footer-menu li a,ul.social-media li a i,.address span,
 }
 
 /*------------------            menu-inner          ---------------------*/
+#sticky-header {
+    position: fixed;
+  top: 0; /* Update to start at the top of the viewport */
+  width: 100%;
+  background-color: white;
+  z-index: 1000;
+    transition: top 0.3s ease-in-out; /* Smooth transition */
+  }
+  
+  .sticky {
+    top: 0; /* Show the sticky header at the top */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add a shadow */
+  }
+  
 .menu-inner {
   background-color: white;
   position: fixed;

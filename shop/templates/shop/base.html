@@ -265,6 +265,26 @@
 	  });
 	});
 	</script>
+
+	<script>
+// JavaScript to add sticky class on scroll
+window.onscroll = function() {
+  stickHeader();
+};
+
+let header = document.getElementById("sticky-header");
+let sticky = header.offsetTop;
+
+function stickHeader() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+
+
+	</script>
 <!-- bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 <!-- jQuery -->
