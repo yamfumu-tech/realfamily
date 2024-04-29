@@ -154,7 +154,9 @@ def about(request):
     about = About.objects.first()
     testimanials = Testimonial.objects.all()
     sub_img = Subscription_image.objects.first()
-    return render(request, 'shop/about.html', {'about': about, 'test':testimanials, 'sub':sub_img})
+    team = Team.objects.order_by("-id")
+    partners = Partner.objects.order_by("-id")
+    return render(request, 'shop/about.html', {'about': about, 'test':testimanials, 'sub':sub_img, 'team':team, 'partners':partners})
 
 def products(request):
     product_objects = Products.objects.order_by('-id')

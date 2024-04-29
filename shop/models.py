@@ -75,6 +75,8 @@ class About(models.Model):
 	description = models.TextField()
 	mission = models.TextField()
 	image = models.ImageField(null=True, blank=True)
+	about_the_company = models.TextField()
+	about_the_company_image = models.ImageField(null=True, blank=True)
 	meta_description = models.TextField()
 	meta_keywords = models.TextField()
 	meta_title = models.TextField()
@@ -97,6 +99,13 @@ class About(models.Model):
 	def ImageURL(self):
 		try:
 			url = self.image.url
+		except:
+			url = ''
+		return url
+	@property
+	def Imageurl(self):
+		try:
+			url = self.about_the_company_image.url
 		except:
 			url = ''
 		return url
@@ -138,7 +147,7 @@ class Team(models.Model):
 	image = models.ImageField(null=True, blank=True)	
 
 	def __str__(self):
-		return self.short_company_description
+		return self.name
 	
 	@property
 	def ImageURL(self):
@@ -159,6 +168,9 @@ class Home(models.Model):
 	image = models.ImageField(null=True, blank=True)
 	company_description_title = models.TextField()
 	company_description = models.TextField()
+	meta_description = models.TextField()
+	meta_keywords = models.TextField()
+	meta_title = models.TextField()
 
 
 
@@ -209,6 +221,9 @@ class Testimonial(models.Model):
 
 class Subscriber(models.Model):
 	email = models.CharField(max_length=100)
+
+	def __str__(self):
+		return self.email
 
 class Contact(models.Model):
 	big_text = models.CharField(max_length=40)
@@ -324,3 +339,18 @@ class Subscription_image(models.Model):
 	class Meta:
 		verbose_name = "Subscription image"
 		verbose_name_plural = "Subscription image"
+
+class Partner(models.Model):
+	name = models.CharField(max_length=30)
+	image = models.ImageField(null=True, blank=True)
+
+	def __str__(self):
+		return self.name
+
+	@property
+	def ImageURL(self):
+		try:
+			url = self.image.url
+		except:
+			url = ''
+		return url
