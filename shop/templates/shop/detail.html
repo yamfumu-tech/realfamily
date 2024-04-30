@@ -2,7 +2,26 @@
 {% block content %}
 {% load static %}
 
-{% block meta %} <title>Product</title> {% endblock meta %}
+{% block meta %}
+<title>{{ product_object.title }} | Real Family Sauce</title>
+<meta name="description" content="{{ product_object.description }} | Real Family Sauce Products Ltd.">
+<meta name="keywords" content="Chili sauces, BBQ sauce, tomato ketchup, garlic sauce, pickles, soy sauce, jams, high-quality food products">
+
+<link rel="canonical" href="https://therealfamilyproducts.com/product/">
+
+
+<meta name="image" content="{{ product_object.imageURL }}">
+
+<meta property="og:title" content="{{ product_object.title }} | Real Family Sauce">
+<meta property="og:description" content="{{ product_object.description }} | Real Family Sauce Products Ltd.">
+<meta property="og:image" content="{{ product_object.imageURL }}">
+<meta property="og:url" content="https://therealfamilyproducts.com/product/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ product_object.title }} | Real Family Sauce">
+<meta name="twitter:description" content="{{ product_object.description }} | Real Family Sauce Products Ltd.">
+<meta name="twitter:image" content="{{ product_object.imageURL }}">
+{% endblock meta %}
   <!-- hero-section -->
   <section class="hero-section about single-blog gap" style="background-image: url(../static/images/background-3.png);" data-aos="flip-up"  data-aos-delay="300" data-aos-duration="400">
 			<div class="container">
@@ -42,14 +61,14 @@
                     
                     <div class="product-options">
                         <div class="price">
-                            <h3 style="color: #B21807; font-weight: bold;">ZMW{{ product_object.price }}</h3>
+                            <h3 style="color: #B21807; font-weight: bold;">ZMW {{ product_object.price }}</h3>
                             <div class="qty-input">
                                   <button class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
-                                  <input class="product-qty" type="number" name="product-qty" min="0" value="1">
+                                  <input id="qty{{ product_object.id }}" class="product-qty" type="number" name="product-qty" min="0" value="1">
                                   <button class="qty-count qty-count--add" data-action="add" type="button">+</button>
                               </div>
                           </div>
-                          <button class="button-price">Add to Basket<i class="fa-solid fa-bag-shopping"></i></button>
+                          <button data-product="{{ product_object.id }}" data-action="add" id="add-cart" class="button-price">Add to Basket<i class="fa-solid fa-bag-shopping"></i></button>
                    </div>
                     </div>
                 </div>

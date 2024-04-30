@@ -1,15 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscription</title>
-</head>
-<body>
-<h3>Hello!</h3>
+{% extends "shop/base.html" %}
 
-<p style="font-weight:bold;">Thank you for subscribing with us.</p>
-</body>
-</html>
+{% block content %}
+
+{% load static %}
+
+<style>
+    /* Reset styles for email compatibility */
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    ul,
+    ol {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+    }
+
+    .container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .header {
+        background-color: #f8f8f8;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .content {
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 20px;
+        color: #888888;
+        font-size: 12px;
+    }
+</style>
+
+<div class="container">
+    <div class="header">
+        <h1>Thank You for Subscribing!</h1>
+    </div>
+    <div class="content">
+        <p><strong>Hello!</strong></p>
+        <p>Thank you for subscribing with us.</p>
+    </div>
+    <div class="footer">
+        <p>This is an automated email. Please do not reply.</p>
+    </div>
+</div>
 
 
+
+{% endblock content %}

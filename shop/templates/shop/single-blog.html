@@ -3,7 +3,26 @@
 {% block content %}
 
 {% load static %}
-{% block title %}<title>Blog</title>{% endblock title %}
+{% block meta %}
+<title>{{blog.title}} | Real Family Sauce Products Ltd</title>
+<meta name="description" content="{{blog.content|safe|slice:":150"}}">
+<meta name="keywords" content="Zambia food products, premium sauces, Real Family Sauce, nutritious food, international markets">
+
+<link rel="canonical" href="https://therealfamilyproducts.com/blogs/">
+
+<meta name="image" content="{{blog.ImageURL}}">
+
+<meta property="og:title" content="{{blog.title}} | Real Family Sauce Products Ltd">
+<meta property="og:description" content="{{blog.content|safe|slice:":150"}}.">
+<meta property="og:image" content="{{blog.ImageURL}}">
+<meta property="og:url" content="https://therealfamilyproducts.com/blogs">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{blog.title}} | by Real Family Sauce Products Ltd">
+<meta name="twitter:description" content="{{blog.content|safe|slice:":150"}}.">
+<meta name="twitter:image" content="{{blog.ImageURL}}">
+
+{% endblock meta %}
   <!-- hero-section -->
   <section class="hero-section about single-blog gap" style="background-image: url(../../static/images/background-3.png);" data-aos="flip-up"  data-aos-delay="300" data-aos-duration="400">
 			<div class="container">
@@ -43,7 +62,7 @@
   		<div class="row">
   			<div class="offset-xl-2 col-xl-8 col-lg-12">
   				<div class="title-container">
-  					<p><span>{{blog.title}}</span></p><br>
+  					
 					<h2>{{blog.title}}</h2>
 	  				
 	  				{{blog.content| safe}}

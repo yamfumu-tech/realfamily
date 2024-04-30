@@ -3,7 +3,26 @@
 {% block content %}
 
 {% load static %}
-{% block meta %}<title>Products</title>{% endblock meta %}
+{% block meta %}
+<title>Our Products | Chili Sauces, BBQ Sauce, Tomato Ketchup | Real Family Sauce</title>
+<meta name="description" content="Explore our diverse range of high-quality food products including chili sauces, BBQ sauce, tomato ketchup, garlic sauce, pickles, soy sauce, jams, and more at Real Family Sauce Products Ltd.">
+<meta name="keywords" content="Chili sauces, BBQ sauce, tomato ketchup, garlic sauce, pickles, soy sauce, jams, high-quality food products">
+
+<link rel="canonical" href="https://therealfamilyproducts.com/products">
+
+<meta name="image" content="{{details.ImageURL}}">
+
+<meta property="og:title" content="Our Products | Chili Sauces, BBQ Sauce, Tomato Ketchup | Real Family Sauce">
+<meta property="og:description" content="Explore our diverse range of high-quality food products including chili sauces, BBQ sauce, tomato ketchup, garlic sauce, pickles, soy sauce, jams, and more at Real Family Sauce Products Ltd.">
+<meta property="og:image" content="{{details.ImageURL}}">
+<meta property="og:url" content="https://therealfamilyproducts.com/products">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Our Products | Chili Sauces, BBQ Sauce, Tomato Ketchup | Real Family Sauce">
+<meta name="twitter:description" content="Explore our diverse range of high-quality food products including chili sauces, BBQ sauce, tomato ketchup, garlic sauce, pickles, soy sauce, jams, and more at Real Family Sauce Products Ltd.">
+<meta name="twitter:image" content="{{details.ImageURL}}">
+
+{% endblock meta %}
 
 <!-- hero-section -->
 <section class="hero-section about gap" style="background-image: url(../../static/images/background-1.png);">

@@ -2,7 +2,27 @@
 
 {% block content %}
 {% load static %}
-{% block meta %}<title>Blogs</title>{% endblock meta %}
+{% block meta %}
+<title>Food Tips, Recipes, and News | Real Family Sauce Products Ltd Blog</title>
+<meta name="description" content="Stay updated with our latest food tips, recipes, industry news, and product highlights on the Real Family Sauce Products Ltd blog. Discover new flavors and cooking inspirations!">
+<meta name="keywords" content="Food tips, recipes, industry news, cooking inspirations, Real Family Sauce blog">
+
+<link rel="canonical" href="https://therealfamilyproducts.com/blogs">
+
+<meta name="image" content="{{details.ImageURL}}">
+
+<meta property="og:title" content="Food Tips, Recipes, and News | Real Family Sauce Products Ltd Blog">
+<meta property="og:description" content="Stay updated with our latest food tips, recipes, industry news, and product highlights on the Real Family Sauce Products Ltd blog. Discover new flavors and cooking inspirations!">
+<meta property="og:image" content="{{details.ImageURL}}">
+<meta property="og:url" content="https://therealfamilyproducts.com/blogs">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Food Tips, Recipes, and News | Real Family Sauce Products Ltd Blog">
+<meta name="twitter:description" content="Stay updated with our latest food tips, recipes, industry news, and product highlights on the Real Family Sauce Products Ltd blog. Discover new flavors and cooking inspirations!">
+<meta name="twitter:image" content="{{details.ImageURL}}">
+
+
+{% endblock meta %}
 
 <!-- hero-section -->
 <section class="hero-section about gap" style="background-image: url(../static/images/background.png);">

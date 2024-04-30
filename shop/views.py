@@ -53,7 +53,7 @@ def cart(request):
 
 def processOrder(request):
     cart = Cart(request)
-    if request.method == 'POST' and request.is_ajax():
+    if request.method == 'POST':
         # Get form data
         name = request.POST.get('Name')
         r_email = request.POST.get('email')
