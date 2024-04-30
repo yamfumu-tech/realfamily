@@ -7,7 +7,7 @@
 <meta name="description" content="{{ product_object.description }} | Real Family Sauce Products Ltd.">
 <meta name="keywords" content="Chili sauces, BBQ sauce, tomato ketchup, garlic sauce, pickles, soy sauce, jams, high-quality food products">
 
-<link rel="canonical" href="https://therealfamilyproducts.com/product/">
+<link rel="canonical" href="{% url 'detail' id=product_object.id %}">
 
 
 <meta name="image" content="{{ product_object.imageURL }}">
@@ -15,7 +15,7 @@
 <meta property="og:title" content="{{ product_object.title }} | Real Family Sauce">
 <meta property="og:description" content="{{ product_object.description }} | Real Family Sauce Products Ltd.">
 <meta property="og:image" content="{{ product_object.imageURL }}">
-<meta property="og:url" content="https://therealfamilyproducts.com/product/">
+<meta property="og:url" content="{% url 'detail' id=product_object.id %}">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{ product_object.title }} | Real Family Sauce">

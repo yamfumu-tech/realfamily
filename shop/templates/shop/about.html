@@ -7,7 +7,7 @@
 <meta name="description" content="{{about.meta_description}}">
 <meta name="keywords" content="{{about.meta_keywords}}">
 
-<link rel="canonical" href="https://therealfamilyproducts.com/about">
+<link rel="canonical" href="{% url 'about' %}">
 
 <meta name="image" content="{{about.ImageURL}}">
 
@@ -16,7 +16,7 @@
 <meta property="og:title" content="{{about.meta_title}}">
 <meta property="og:description" content="{{about.meta_description}}">
 <meta property="og:image" content="{{about.ImageURL}}">
-<meta property="og:url" content="https://therealfamilyproducts.com/about">
+<meta property="og:url" content="{% url 'about' %}t">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{about.meta_title}}">
@@ -32,7 +32,7 @@
 				<div class="about-text">
 					<ul class="crumbs d-flex">
 						<li><a href="{% url 'index' %}">Home</a></li>
-						<li class="two"><a href="{% url 'index' %}"><i class="fa-solid fa-right-long"></i> About Us</a>
+						<li class="two"><a href="{% url 'about' %}"><i class="fa-solid fa-right-long"></i> About Us</a>
 						</li>
 					</ul>
 					<h2>{{about.short_description}}</h2>

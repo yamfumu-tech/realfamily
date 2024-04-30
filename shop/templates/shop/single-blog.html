@@ -8,14 +8,14 @@
 <meta name="description" content="{{blog.content|safe|slice:":150"}}">
 <meta name="keywords" content="Zambia food products, premium sauces, Real Family Sauce, nutritious food, international markets">
 
-<link rel="canonical" href="https://therealfamilyproducts.com/blogs/">
+<link rel="canonical" href="{% url 'single_blog' id=blog.id %}">
 
 <meta name="image" content="{{blog.ImageURL}}">
 
 <meta property="og:title" content="{{blog.title}} | Real Family Sauce Products Ltd">
 <meta property="og:description" content="{{blog.content|safe|slice:":150"}}.">
 <meta property="og:image" content="{{blog.ImageURL}}">
-<meta property="og:url" content="https://therealfamilyproducts.com/blogs">
+<meta property="og:url" content="{% url 'single_blog' id=blog.id %}">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{{blog.title}} | by Real Family Sauce Products Ltd">
