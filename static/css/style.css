@@ -350,7 +350,7 @@ header {
 .cart-count {
     position: absolute;
     top: -8px; /* Adjust top position as needed */
-    right: -8px; /* Adjust right position as needed */
+    right: -3px; /* Adjust right position as needed */
     background-color: #B21807;
     color: white;
     font-size: 12px;
@@ -358,11 +358,20 @@ header {
     border-radius: 50%;
 }
 
+.cart-count span {
+    background-color: #B21807;
+    color: #B21807;
+}
+
 /* Mobile-specific styles */
 @media screen and (max-width: 768px) {
     .extras.bag {
         display: flex;
         align-items: center;
+    }
+    .cart-count span {
+        background-color: #B21807;
+        color: #B21807;
     }
     .extras.bag .menu-btn {
         margin-right: 10px; /* Add spacing between bag and menu icons */
@@ -376,9 +385,49 @@ header {
         border-radius: 50%;
         position: absolute;
         top: -10px; /* Adjust vertical position */
+        right: -3px; /* Adjust horizontal position */
+        transform: translate(50%, -50%); /* Center the count within the bag */
+    }
+    .extras.bag .bar-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: auto; /* Pushes the shopping bag and count to the left */
+        margin-right: 10px; /* Pushes the shopping bag and count to the left */
+    }
+    .extras.bag i {
+        position: relative; /* Ensure proper stacking context for cart count */
+        margin-right: 10px; /* Spacing between bag icon and cart count */
+    }
+}
+
+/* Mobile-specific styles */
+@media screen and (max-width: 1024px) {
+    .extras.bag {
+        display: flex;
+        align-items: center;
+    }
+    .extras.bag .menu-btn {
+        margin-right: 10px; /* Add spacing between bag and menu icons */
+        position: relative;
+    }
+    .extras.bag .cart-count {
+        background-color: #B21807;
+        color: white;
+        font-size: 10px;
+        padding: 4px 8px;
+        border-radius: 50%;
+        position: absolute;
+        top: -10px; /* Adjust vertical position */
         right: -10px; /* Adjust horizontal position */
         transform: translate(50%, -50%); /* Center the count within the bag */
     }
+
+    .cart-count span {
+        background-color: #B21807;
+        color: #B21807;
+    }
+    
     .extras.bag .bar-menu {
         display: flex;
         align-items: center;
