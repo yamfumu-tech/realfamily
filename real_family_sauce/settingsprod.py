@@ -81,10 +81,21 @@ WSGI_APPLICATION = 'real_family_sauce.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
+'''DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'realfamily',
+        'USER': 'realfamily',
+        'PASSWORD': 'realfamily',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -125,13 +136,16 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR/'static'
+
+#STATICFILES_DIRS = [
+    #os.path.join(BASE_DIR, 'static')
+#]
 
 MEDIA_URL = '/images/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+MEDIA_ROOT = BASE_DIR/'static/images'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
