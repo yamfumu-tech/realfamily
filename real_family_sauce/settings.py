@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-sa!8mti&4a#276sz563nrj4os-eu(iwcj$vbuly0^=sb)7h1z!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['77.37.124.62']
+ALLOWED_HOSTS = ['realfamilyproducts.com','www.realfamilyproducts.com','77.37.124.62']
 
 
 # Application definition
