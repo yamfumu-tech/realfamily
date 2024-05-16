@@ -7,7 +7,7 @@
 <meta name="description" content="{{ product_object.description }} | Real Family Sauce Products Ltd.">
 <meta name="keywords" content="Chili sauces, BBQ sauce, tomato ketchup, garlic sauce, pickles, soy sauce, jams, high-quality food products">
 
-<link rel="canonical" href="{% url 'detail' id=product_object.id %}">
+<link rel="canonical" href="https://realfamilyproducts.com/product/{{ product_object.id }}">
 
 
 <meta name="image" content="{{ product_object.imageURL }}">
@@ -31,7 +31,7 @@
 							<ul class="crumbs d-flex">
 								<li><a href="{% url 'index' %}">Home</a></li>
 								<li><a href="{% url 'products' %}"><i class="fa-solid fa-right-long"></i>products</a></li>
-								<li class="two"><a href="/{{product_object.id}}"><i class="fa-solid fa-right-long"></i>product</a></li>
+								<li class="two"><a href="{% url 'detail' id=product_object.id %}"><i class="fa-solid fa-right-long"></i>product</a></li>
 							</ul>
 							
 						</div>
@@ -64,7 +64,7 @@
                             <h3 style="color: #B21807; font-weight: bold;">ZMW {{ product_object.price }}</h3>
                             <div class="qty-input">
                                   <button class="qty-count qty-count--minus" data-action="minus" type="button">-</button>
-                                  <input id="qty{{ product_object.id }}" class="product-qty" type="number" name="product-qty" min="0" value="1">
+                                  <input id="qty{{ product_object.id }}" class="product-qty" type="number" name="product-qty" min="5" value="5">
                                   <button class="qty-count qty-count--add" data-action="add" type="button">+</button>
                               </div>
                           </div>
