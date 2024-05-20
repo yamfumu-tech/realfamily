@@ -9,7 +9,6 @@ from django.utils.html import strip_tags
 from django.http import JsonResponse
 import json
 from .utils import *
-import datetime
 from .cart import Cart
 from django.contrib import messages
 
@@ -178,9 +177,6 @@ def products(request):
     return render(request, 'shop/products.html', {
         'product_objects': product_objects, 'nums':nums, 'categories': categories, 'details':details
     })
-
-def faq(request):
-    return render(request, 'shop/faq.html')
    
 
 def not_found(request, exception):

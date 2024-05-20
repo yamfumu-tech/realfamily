@@ -88,8 +88,9 @@
 	<section class="our-team-section gap">
 		<div class="container">
 			<div class="hading" data-aos="fade-up"  data-aos-delay="200" data-aos-duration="300">
+				{% if team %}
 				<h2>Our team</h2>
-				<p></p>
+				{% endif %}
 			</div>
 			<div class="row">
 				{% for member in team %}
@@ -109,7 +110,9 @@
 	data-aos-duration="300">
 	<div class="container">
 		<div class="hading">
+			{% if partners %}
 			<h2>Our trusted partners</h2>
+			{% endif %}
 		</div>
 		<div class="row align-items-center logodata owl-carousel owl-theme">
 			{% for partner in partners %}
